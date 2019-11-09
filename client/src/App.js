@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReadString from "./ReadString";
 import SetString from "./SetString";
 
@@ -24,12 +24,12 @@ const App = props => {
   
   return (
     drizzleReadinessState.loading ? 
-      "Loading Drizzle..." 
+      <>Loading Drizzle...</>
       :
-      <Fragment>
+      <>
         <ReadString drizzle={drizzle} drizzleState={drizzleReadinessState.drizzleState} />
         <SetString drizzle={drizzle} drizzleState={drizzleReadinessState.drizzleState} />
-      </Fragment>
+      </>
   )
 }
 

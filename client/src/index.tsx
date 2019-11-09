@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 
 // import drizzle functions and contract artifact
+// @ts-ignore
 import { Drizzle } from "drizzle";
 import MyStringStore from "./contracts/MyStringStore.json";
 
