@@ -25,9 +25,9 @@ const App = props => {
     drizzleReadinessState.loading ? 
       <>Loading Drizzle...</>
       :
-      <Fragment>
+      <>
         <NormalLoginForm />
-      </Fragment>
+      </>
   )
 }
 
