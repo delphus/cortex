@@ -7,4 +7,8 @@ stdenv.mkDerivation rec {
     buildInputs = [
         python3 python3Packages.pip python3Packages.setuptools libffi openssl
     ];
+
+    shellHook = ''
+        export SOURCE_DATE_EPOCH=315532800
+    '';
 }
