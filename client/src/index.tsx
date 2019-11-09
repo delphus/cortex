@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 
 // import drizzle functions and contract artifact
+// @ts-ignore
 import { Drizzle } from "drizzle";
 
 // let drizzle know what contracts we want and how to access our test blockchain
