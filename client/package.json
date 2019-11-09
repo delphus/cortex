@@ -5,14 +5,17 @@
   "dependencies": {
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.2",
     "antd": "^3.25.0",
     "drizzle": "^1.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "react": "^16.11",
     "react-dom": "^16.11",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "routes": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

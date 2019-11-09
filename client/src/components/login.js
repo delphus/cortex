@@ -48,7 +48,7 @@ class NormalLoginForm extends React.Component {
             {/* The above link is for a password retrieval service and is thus temporary */}
             Forgot password
           </a>
-          <Button onClick = {()=>{window.location='/Dashboard'}} type="primary" htmlType="submit" className="login-form-button">
+          <Button onClick = {()=>{window.location='/dashboard'}} type="primary" htmlType="submit" className="login-form-button">
             Log in
           {/*go to home page*/}
           </Button>
