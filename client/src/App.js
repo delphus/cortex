@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NormalLoginForm from './components/login.js';
+import torLog from './components/torLog.js';
 
 const App = props => {
   const [drizzleReadinessState, setDrizzleReadinessState] = useState({drizzleState: null, loading: true})
@@ -27,6 +28,7 @@ const App = props => {
       :
       <>
         <NormalLoginForm />
+        <torLog />
       </>
   )
 }

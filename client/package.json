@@ -3,16 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@toruslabs/torus-embed": "^0.2.6",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "antd": "^3.25.0",
     "drizzle": "^1.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "fortmatic": "^1.0.0",
     "react": "^16.11",
     "react-dom": "^16.11",
     "react-scripts": "3.2.0",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "torus": "^0.0.3",
+    "web3": "^1.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

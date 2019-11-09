@@ -3,6 +3,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import './index.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import Torus from "@toruslabs/torus-embed";
+// import Web3 from "web3";
 
 class NormalLoginForm extends React.Component {
   handleSubmit = e => {
@@ -48,10 +50,23 @@ class NormalLoginForm extends React.Component {
             {/* The above link is for a password retrieval service and is thus temporary */}
             Forgot password
           </a>
-          <Button onClick = {()=>{window.location='/Dashboard'}} type="primary" htmlType="submit" className="login-form-button">
+          <Button onClick={() => { window.location = '/Dashboard' }} type="primary" htmlType="submit" className="login-form-button">
             Log in
           {/*go to home page*/}
           </Button>
+          <Button size="lg" block
+            onClick={async () => {
+              const torus = new Torus();
+              await torus.init();
+              await torus.login(); // await torus.ethereum.enable()
+              // const web3 = new Web3(torus.provider); 
+                torus.login({
+                  verifier: 'google'
+              })
+            }}>
+            Connect with Torus
+          </Button>
+          <p></p>
           Or <a href="https://delph.us/">register now!</a>
           {/* The above link is for a registration service and is thus temporary */}
         </Form.Item>
