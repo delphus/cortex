@@ -5,11 +5,10 @@ import App from './App';
 
 // import drizzle functions and contract artifact
 import { Drizzle } from "drizzle";
-import MyStringStore from "./contracts/MyStringStore.json";
 
 // let drizzle know what contracts we want and how to access our test blockchain
 const options = {
-  contracts: [MyStringStore],
+  contracts: [],
   web3: {
     fallback: {
       type: "ws",

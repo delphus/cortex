@@ -1,5 +1,9 @@
 {
   "devDependencies": {
     "truffle": "^5.0.44"
+  },
+  "dependencies": {
+    "react-dom": "^16.11.0",
+    "reactdom": "^2.0.0"
   }
 }
