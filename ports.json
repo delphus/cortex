@@ -1,0 +1,13 @@
+{
+  "Alice": {
+    "1000": {
+      "verification_key": "02b89611981ab37adbaf5f4fcf7d6a66b3a030dd43785f8c0e3c8070515690579a"
+    }
+  },
+  "Bob": {
+    "1000": {},
+    "1001": {}
+  },
+  "Enrico": {},
+  "policy_encrypting_key": "03d46059167280b8becdf3e3e11ccdbf48649a1add1fa0e0ed50583bef3f7f2dbb"
+}
