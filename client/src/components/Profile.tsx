@@ -4,13 +4,9 @@ import ProfileCard from "./ProfileCard";
 import ProofCreator from "./ProofCreator";
 //@ts-ignore
 import Identicon, { jsNumberForAddress } from "react-jazzicon";
-<<<<<<< HEAD
 import {Table} from "antd"
 import ServiceId from "../data/ServiceIds";
 import Proof from "../data/Proof";
-
-=======
->>>>>>> 5c67cf8488a30c93d32bc2380112df04c6f51a64
 
 /*the profile picture has been moved to the ProofCreator file instead
  and import Identicon, { jsNumberForAddress } from "react-jazzicon"; was used instead
