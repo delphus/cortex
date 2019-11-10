@@ -4,30 +4,26 @@ import ProfileCard from "./ProfileCard";
 import ProofCreator from "./ProofCreator";
 //@ts-ignore
 import Identicon, { jsNumberForAddress } from "react-jazzicon";
-<<<<<<< HEAD
 import {Table} from "antd"
 import ServiceId from "../data/ServiceIds";
 import Proof from "../data/Proof";
+import verifyProof from "../util/verifyProof";
 
-=======
->>>>>>> 5c67cf8488a30c93d32bc2380112df04c6f51a64
 
 /*the profile picture has been moved to the ProofCreator file instead
  and import Identicon, { jsNumberForAddress } from "react-jazzicon"; was used instead
 */
 
+// const dataSource: {identifier:string, status:string, proof:string}[] = [];
+
 export default function Profile() {
   // const status = useContext(DrizzleContext);
   const { drizzle, readinessState } = useContext(DrizzleContext);
-  const [proofs, setProofs] = useState<Proof[]>([]);
-
-  console.log("ready:" + readinessState);
-
+  const [dataSource, setDataSource] = useState<{ identifier: string, proof:string }[]>([{}] as any)
 
   let address = readinessState.drizzleState.accounts[0]
   //TODO hook this up with the backend
   
-  const dataSource: {identifier:string, status:string, proof:string}[] = [];
 
   useEffect(() => {
     (async () => {
@@ -38,12 +34,15 @@ export default function Profile() {
         const { identifier } = await Cortex.methods
           .getProofFromUser(address, svc)
           .call();
-        // if (identifier !== "") {
-          dataSource.push({ identifier :identifier, status:"yes" , proof: proofs.toString() });
-        // }
-        console.log("data source: " + dataSource)
+        const result = await verifyProof(
+          drizzle.web3,
+          { identifier, svc },
+          readinessState.drizzleState.accounts[0]
+        );
+        if (identifier !== "") {
+          setDataSource([...dataSource, { identifier: identifier , proof: result.toString() }])
+        }
       }
-     
     })();
   }, [address, drizzle]);
 
@@ -55,18 +54,13 @@ export default function Profile() {
       key: 'identifier',
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
-    },
-    {
       title: 'Proof',
       dataIndex: 'proof',
       key: 'proof',
     },
   ]
 
-
+  console.log("length "+ dataSource.length)
   return (
     <>
       <ProfileCard address={address}></ProfileCard>
