@@ -9,6 +9,7 @@ async function fetchProof({ svc, identifier }: Proof) {
         `https://cors-anywhere.herokuapp.com/https://${identifier}/.well-known/cortex.txt`
       ).then(r => r.text())).trim();
     case ServiceIds.REDDIT:
+    case ServiceIds.ETHEREUM:
     case ServiceIds.EMAIL:
       throw new Error("Not yet implemented!");
   }

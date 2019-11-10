@@ -29,7 +29,7 @@ function ProofEntry({ proof }: { proof: Proof }) {
 
   return (
     <>
-      {proof.identifier} {proof.svc} {verified && verified.toString()} {err}
+      {/* {proof.identifier} {proof.svc} {verified &&// verified.toString()} {err} */}
     </>
   );
 }

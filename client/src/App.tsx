@@ -7,6 +7,8 @@ import Web3 from "web3";
 import Profile from "./components/Profile";
 import { Layout, Typography, Menu } from "antd";
 import "antd/dist/antd.css";
+import SubmitAttestation from "./components/SubmitAttestation";
+import Attest from "./components/Attest";
 
 const Dashboard = lazy(DASHBOARD);
 const Login = lazy(LOGIN);
@@ -68,12 +70,12 @@ function App({ drizzle }: any) {
               <Menu
                 theme="dark"
                 mode="horizontal"
-                defaultSelectedKeys={["2"]}
+                defaultSelectedKeys={["1"]}
                 style={{ lineHeight: "64px" }}
               >
-                <Menu.Item ><Link to="LookupUser">Lookup User</Link></Menu.Item>
-                <Menu.Item ><Link to="Profile">Profile</Link></Menu.Item>
-                <Menu.Item ><Link to="thing">Nav 3</Link></Menu.Item>
+                <Menu.Item ><Link to="/profile">Profile</Link></Menu.Item>
+                <Menu.Item ><Link to="/submit-attestation">Submit Attestation</Link></Menu.Item>
+                <Menu.Item ><Link to="/attest">Attest</Link></Menu.Item>
               </Menu>
             </Layout.Header>
             <Layout.Content style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}>
@@ -81,6 +83,8 @@ function App({ drizzle }: any) {
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/submit-attestation" component={SubmitAttestation} />
+                <Route path="/attest" component={Attest} />
               </Switch>
             </Layout.Content>
           </Layout>
