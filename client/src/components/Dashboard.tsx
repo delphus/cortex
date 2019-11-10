@@ -1,16 +1,15 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './login.css';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import { render } from 'react-dom';
+import React from "react";
+import "antd/dist/antd.css";
+import "./login.css";
+import NuCypher from "./NuCypher";
 
 function Dashboard() {
-    return (
-    <h1>Dashboard</h1>
-    )
-  }
-  
-  export default () => (
-      <Dashboard/>
+  return (
+    <>
+      <h1>dashboard stuff</h1>
+      <NuCypher />
+    </>
   );
+}
 
+export default Dashboard;

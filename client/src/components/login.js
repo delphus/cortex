@@ -4,6 +4,7 @@ import './login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import Torus from "@toruslabs/torus-embed";
 import LogoGather from './logoGather.js';
+
 // import Web3 from "web3";
 
 class NormalLoginForm extends React.Component {
@@ -52,7 +53,7 @@ class NormalLoginForm extends React.Component {
             {/* The above link is for a password retrieval service and is thus temporary */}
             Forgot password
           </a>
-          <Button onClick={() => { window.location = '/Dashboard' }} type="primary" htmlType="submit" className="login-form-button">
+          <Button onClick = {()=>{window.location='/dashboard'}} type="primary" htmlType="submit" className="login-form-button">
             Log in
           {/*go to home page*/}
           </Button>
@@ -76,4 +77,5 @@ class NormalLoginForm extends React.Component {
   }
 }
 
-export default Form.create({ name: 'normal_login' })(NormalLoginForm);
+export default Form.create({ name: 'normal_login' })(NormalLoginForm)
+
