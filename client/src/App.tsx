@@ -1,11 +1,11 @@
 import React, { Suspense, lazy } from "react";
-import { Switch, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Switch, Route, HashRouter as Router, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { DASHBOARD, LOGIN } from "./route";
 import Web3 from "web3";
 import Profile from "./components/Profile";
-import { Layout, Typography, Menu } from "antd";
+import { Layout, Typography, Menu, Icon } from "antd";
 import "antd/dist/antd.css";
 import SubmitAttestation from "./components/SubmitAttestation";
 import Attest from "./components/Attest";
@@ -46,7 +46,7 @@ function App({ drizzle }: any) {
   }, [drizzle.store, drizzleReadinessState]);
 
   return drizzleReadinessState.loading ? (
-    <>Loading Drizzle...</>
+    <></>
   ) : (
     <DrizzleContext.Provider
       value={{ drizzle, readinessState: drizzleReadinessState }}

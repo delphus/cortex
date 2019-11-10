@@ -13,7 +13,7 @@ const options = {
   web3: {
     fallback: {
       type: "ws",
-      url: "ws://127.0.0.1:9545",
+      url: "wss://ropsten.infura.io/ws/v3/b81c00acfa254c5dbefa77dd3a3b588e",
     },
   },
 };
