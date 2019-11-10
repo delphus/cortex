@@ -1,72 +1,64 @@
-import React, { useLayoutEffect, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import {
   Switch,
   Route,
-  withRouter,
-  RouteComponentProps,
   BrowserRouter as Router
 } from "react-router-dom";
-import  { useState, useEffect } from 'react';
-import NormalLoginForm from './components/login.js';
+import { useState, useEffect } from "react";
 
-import{
-  DASHBOARD,
-  LOGIN
-} from "./route"
+import { DASHBOARD, LOGIN } from "./route";
 
 const Dashboard = lazy(DASHBOARD);
-const Login = lazy(LOGIN)
+const Login = lazy(LOGIN);
 
+export const DrizzleContext = React.createContext<{
+  drizzle: any;
+  readinessState: { loading: boolean; drizzleState: any };
+}>({ drizzle: null, readinessState: null! });
 
+function App({ drizzle }: any) {
+  const [drizzleReadinessState, setDrizzleReadinessState] = useState({
+    drizzleState: null,
+    loading: true
+  });
 
-function App({ location, history, drizzle }: any) {
-
-
-  const [drizzleReadinessState, setDrizzleReadinessState] = useState({drizzleState: null, loading: true})
-
-  useEffect( 
-    () => {
-      const unsubscribe = drizzle.store.subscribe( () => {
-        // every time the store updates, grab the state from drizzle
-        const drizzleState = drizzle.store.getState()
-        // check to see if it's ready, if so, update local component state
-        if (drizzleState.drizzleStatus.initialized) {
-          setDrizzleReadinessState({drizzleState: drizzleState, loading: false})
-        }
-      })
-      return () => {
-        unsubscribe()
+  useEffect(() => {
+    const unsubscribe = drizzle.store.subscribe(() => {
+      // every time the store updates, grab the state from drizzle
+      const drizzleState = drizzle.store.getState();
+      // check to see if it's ready, if so, update local component state
+      if (drizzleState.drizzleStatus.initialized) {
+        setDrizzleReadinessState({
+          drizzleState: drizzleState,
+          loading: false
+        });
       }
-    }, [drizzle.store, drizzleReadinessState]
-  )
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [drizzle.store, drizzleReadinessState]);
 
-
-
-
-  return (
-    drizzleReadinessState.loading ? 
-      <>Loading Drizzle...</>
-      :
-      <>
-        <Suspense
-          // Show no fallback for the support widget since it's not crucial to
-          // site functionality
-          fallback={<></>}
-        >
-          <Router>
-            <Switch>
-              <Route path="/" exact component = {Login}/>
-              <Route path="/dashboard" component={Dashboard} />
-            </Switch>
-          </Router>
-        </Suspense>
-      </>
-  
-      
-
-
+  return drizzleReadinessState.loading ? (
+    <>Loading Drizzle...</>
+  ) : (
+    <DrizzleContext.Provider
+      value={{ drizzle, readinessState: drizzleReadinessState }}
+    >
+      <Suspense
+        // Show no fallback for the support widget since it's not crucial to
+        // site functionality
+        fallback={<></>}
+      >
+        <Router>
+          <Switch>
+            <Route path="/" exact component={Login} />
+            <Route path="/dashboard" component={Dashboard} />
+          </Switch>
+        </Router>
+      </Suspense>
+    </DrizzleContext.Provider>
   );
 }
-
 
 export default App;
