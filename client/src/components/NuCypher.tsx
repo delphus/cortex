@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { DrizzleContext } from "../App";
 
 export default function NuCypher() {
-  const context = useContext(DrizzleContext);
-  console.log("NuCypher:", context);
+  const { drizzle } = useContext(DrizzleContext);
+  console.log("NuCypher:", drizzle);
 
   return null;
 }

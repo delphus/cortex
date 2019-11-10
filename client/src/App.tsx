@@ -7,14 +7,18 @@ import {
 import { useState, useEffect } from "react";
 
 import { DASHBOARD, LOGIN } from "./route";
+import Web3 from "web3";
 
 const Dashboard = lazy(DASHBOARD);
 const Login = lazy(LOGIN);
 
 export const DrizzleContext = React.createContext<{
-  drizzle: any;
+  drizzle: {
+    web3: Web3
+    [x: string]: any;
+  };
   readinessState: { loading: boolean; drizzleState: any };
-}>({ drizzle: null, readinessState: null! });
+}>({ drizzle: null!, readinessState: null! });
 
 function App({ drizzle }: any) {
   const [drizzleReadinessState, setDrizzleReadinessState] = useState({
