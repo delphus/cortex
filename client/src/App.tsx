@@ -1,20 +1,19 @@
 import React, { Suspense, lazy } from "react";
-import {
-  Switch,
-  Route,
-  BrowserRouter as Router
-} from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { DASHBOARD, LOGIN } from "./route";
 import Web3 from "web3";
+import Profile from "./components/Profile";
+import { Layout, Typography, Menu } from "antd";
+import "antd/dist/antd.css";
 
 const Dashboard = lazy(DASHBOARD);
 const Login = lazy(LOGIN);
 
 export const DrizzleContext = React.createContext<{
   drizzle: {
-    web3: Web3
+    web3: Web3;
     [x: string]: any;
   };
   readinessState: { loading: boolean; drizzleState: any };
@@ -50,14 +49,40 @@ function App({ drizzle }: any) {
       value={{ drizzle, readinessState: drizzleReadinessState }}
     >
       <Suspense
-        // Show no fallback for the support widget 
+        // Show no fallback for the support widget
         fallback={<></>}
       >
         <Router>
-          <Switch>
-            <Route path="/" exact component={Login} />
-            <Route path="/dashboard" component={Dashboard} />
-          </Switch>
+          <Layout>
+            <Layout.Header
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <Typography.Title style={{ color: "white" }}>
+                Dashboard
+              </Typography.Title>
+              <Menu
+                theme="dark"
+                mode="horizontal"
+                defaultSelectedKeys={["2"]}
+                style={{ lineHeight: "64px" }}
+              >
+                <Menu.Item key="1">Lookup User</Menu.Item>
+                <Menu.Item key="2">Profile</Menu.Item>
+                <Menu.Item key="3">nav 3</Menu.Item>
+              </Menu>
+            </Layout.Header>
+            <Layout.Content>
+              <Switch>
+                <Route path="/" exact component={Login} />
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/profile" component={Profile} />
+              </Switch>
+            </Layout.Content>
+          </Layout>
         </Router>
       </Suspense>
     </DrizzleContext.Provider>
