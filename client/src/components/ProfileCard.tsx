@@ -2,47 +2,27 @@ import React, { useEffect, useContext, useState } from "react";
 import { Avatar } from "antd";
 import ServiceId from "../data/ServiceIds";
 import { DrizzleContext } from "../App";
-
-type Proof = {
-  svc: ServiceId;
-  identifier: string;
-};
-
-async function fetchProof({ svc, identifier }: Proof) {
-  switch (svc) {
-    case ServiceId.HTTPS:
-      return await fetch(`https://crossorigin.me/https://${identifier}`).then(
-        r => r.text()
-      );
-    case ServiceId.REDDIT:
-    case ServiceId.EMAIL:
-      throw new Error("Not yet implemented!");
-  }
-}
+import Proof from "../data/Proof";
+import verifyProof from "../util/verifyProof";
 
 function ProofEntry({ proof }: { proof: Proof }) {
-  const { drizzle } = useContext(DrizzleContext);
+  const { drizzle, readinessState } = useContext(DrizzleContext);
   const [verified, setVerified] = useState<boolean | undefined>(undefined);
   const [err, setErr] = useState("");
 
   useEffect(() => {
     (async () => {
-      let fetched: string;
-      try {
-        fetched = await fetchProof(proof);
-      } catch (e) {
-        console.error(e);
-        setErr("Failed to fetch proof.");
-        setVerified(false);
-        return;
-      }
+      const res = await verifyProof(
+        drizzle.web3,
+        proof,
+        readinessState.drizzleState.accounts[0]
+      );
 
-      try {
-        await drizzle.web3.eth.personal.ecRecover(proof.identifier, fetched);
+      if (res === "Verified") {
         setVerified(true);
-      } catch (e) {
+      } else {
         setVerified(false);
-        setErr("Proof check failed.");
+        setErr(res);
       }
     })();
   });
