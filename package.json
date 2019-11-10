@@ -12,6 +12,7 @@
     "react-dom": "^16.11.0",
     "reactdom": "^2.0.0",
     "request": "^2.88.0",
+    "truffle-hdwallet-provider": "^1.0.17",
     "ws": "^7.2.0"
   }
 }
