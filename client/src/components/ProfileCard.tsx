@@ -57,7 +57,7 @@ export default function ProfileCard({ address }: { address: string }) {
 
   return (
     <>
-      <Avatar>{address}</Avatar>
+      {/* <Avatar>{address}</Avatar> */}
       {proofs.map(proof => (
         <ProofEntry proof={proof} key={proof.svc} />
       ))}
