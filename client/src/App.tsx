@@ -75,7 +75,7 @@ function App({ drizzle }: any) {
                 <Menu.Item key="3">nav 3</Menu.Item>
               </Menu>
             </Layout.Header>
-            <Layout.Content>
+            <Layout.Content style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}>
               <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
