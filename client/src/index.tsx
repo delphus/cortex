@@ -7,23 +7,9 @@ import App from './App';
 // @ts-ignore
 import { Drizzle } from "drizzle";
 
-import nucypherRegistry from "./config/contract_registry.json";
-// Convert NuCypher registry file into the Truffle format
-const contracts = nucypherRegistry.map(c => ({
-  contractName: c[0],
-  abi: c[2],
-  networks: {
-    "5": {
-      events: {},
-      links: {},
-      address: c[1]
-    }
-  }
-}))
-
 // let drizzle know what contracts we want and how to access our test blockchain
 const options = {
-  contracts,
+  contracts: [require("./contracts/Cortex.json")],
   web3: {
     fallback: {
       type: "ws",
