@@ -9,7 +9,6 @@ import ServiceId from "../data/ServiceIds";
 import Proof from "../data/Proof";
 import verifyProof from "../util/verifyProof";
 
-
 /*the profile picture has been moved to the ProofCreator file instead
  and import Identicon, { jsNumberForAddress } from "react-jazzicon"; was used instead
 */
