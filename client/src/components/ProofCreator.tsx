@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { DrizzleContext } from "../App";
-import { Steps, Button, Input, Select, message, Result } from "antd";
+import { Steps, Button, Input, Select, message, Result, Popover, Icon} from "antd";
 import styled from "styled-components";
 import ServiceIds from "../data/ServiceIds";
 import verifyProof from "../util/verifyProof";
+//@ts-ignore
+import Identicon, { jsNumberForAddress } from "react-jazzicon";
+//@ts-ignore
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const StepsContent = styled.div`
   margin-top: 16px;
@@ -27,6 +31,31 @@ export default function ProofCreator() {
       title: "Select identity",
       content: (
         <>
+          <Identicon
+            seed={jsNumberForAddress(readinessState.drizzleState.accounts[0])}
+            diameter={32}
+          />
+
+        
+        {/* TODO
+        try and fix this so the address also displays with the avatar
+        <Popover content="Copy address to clipboard">
+        <CopyToClipboard text={readinessState.drizzleState.accounts[0]}>
+          <Button
+            type="primary"
+            shape="circle"
+            onClick={(e: any) => {
+              // tHiS is the only thing that can run on this click event
+              // (stops navigation if this is wrapped in an <a> tag)
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <Icon type="copy" />
+          </Button>
+        </CopyToClipboard>
+      </Popover> */}
+
           <p>Select an identity to prove:</p>
 
           <Select onChange={setSvc} style={{ width: "200px" }}>

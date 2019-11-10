@@ -62,8 +62,8 @@ function App({ drizzle }: any) {
                 justifyContent: "space-between"
               }}
             >
-              <Typography.Title style={{ color: "white" }}>
-                Dashboard
+              <Typography.Title style={{ color: "white" }}>{/* this color got overrided by the Link*/}
+                <Link to="Dashboard">Dashboard</Link>
               </Typography.Title>            
               <Menu
                 theme="dark"
