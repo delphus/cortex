@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { Switch, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Switch, Route, HashRouter as Router, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { DASHBOARD, LOGIN } from "./route";

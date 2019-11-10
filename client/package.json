@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@toruslabs/torus-embed": "^0.2.6",
     "@types/qrcode.react": "^0.9.0",
