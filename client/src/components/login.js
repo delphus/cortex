@@ -1,7 +1,7 @@
 
 import React from 'react';
 import 'antd/dist/antd.css';
-import './index.css';
+import './login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import Torus from "@toruslabs/torus-embed";
 // import Web3 from "web3";
@@ -19,6 +19,8 @@ class NormalLoginForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
+      <div style={{display:"flex",justifyContent:"center",alignItems:"center",padding:"150px"}}>
+  <div style={{width:"300px"}}>
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator('username', {
@@ -29,8 +31,6 @@ class NormalLoginForm extends React.Component {
               placeholder="Username"
             />,
           )}
-        </Form.Item>
-        <Form.Item>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: 'Please input your Password!' }],
           })(
@@ -40,12 +40,13 @@ class NormalLoginForm extends React.Component {
               placeholder="Password"
             />,
           )}
-        </Form.Item>
-        <Form.Item>
           {getFieldDecorator('remember', {
             valuePropName: 'checked',
             initialValue: true,
           })(<Checkbox>Remember me</Checkbox>)}
+          <br></br>
+          Or <a href="https://delph.us/">register now!</a>
+          {/* The above link is for a registration service and is thus temporary */}
           <a className="login-form-forgot" href="https://delph.us/">
             {/* The above link is for a password retrieval service and is thus temporary */}
             Forgot password
@@ -64,13 +65,12 @@ class NormalLoginForm extends React.Component {
                   verifier: 'google'
               })
             }}>
-            Connect with Torus
+            Connect via Torus
           </Button>
-          <p></p>
-          Or <a href="https://delph.us/">register now!</a>
-          {/* The above link is for a registration service and is thus temporary */}
         </Form.Item>
       </Form>
+      </div>
+</div>
     );
   }
 }
