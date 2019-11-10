@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { DASHBOARD, LOGIN } from "./route";
 import Web3 from "web3";
 import Profile from "./components/Profile";
-import { Layout, Typography, Menu } from "antd";
+import { Layout, Typography, Menu, Icon } from "antd";
 import "antd/dist/antd.css";
 import SubmitAttestation from "./components/SubmitAttestation";
 import Attest from "./components/Attest";
