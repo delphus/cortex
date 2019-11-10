@@ -1,5 +1,5 @@
-const MyStringStore = artifacts.require("MyStringStore");
+const Cortex = artifacts.require("Cortex");
 
 module.exports = function(deployer) {
-  deployer.deploy(MyStringStore);
+  deployer.deploy(Cortex);
 };
