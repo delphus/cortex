@@ -46,8 +46,7 @@ function App({ drizzle }: any) {
       value={{ drizzle, readinessState: drizzleReadinessState }}
     >
       <Suspense
-        // Show no fallback for the support widget since it's not crucial to
-        // site functionality
+        // Show no fallback for the support widget 
         fallback={<></>}
       >
         <Router>
