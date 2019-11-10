@@ -1,9 +1,9 @@
-
 import React from 'react';
 import 'antd/dist/antd.css';
 import './login.css';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import Torus from "@toruslabs/torus-embed";
+import LogoGather from './logoGather.js';
 // import Web3 from "web3";
 
 class NormalLoginForm extends React.Component {
@@ -20,6 +20,7 @@ class NormalLoginForm extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <div style={{display:"flex",justifyContent:"center",alignItems:"center",padding:"150px"}}>
+        <LogoGather />
   <div style={{width:"300px"}}>
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
@@ -55,7 +56,7 @@ class NormalLoginForm extends React.Component {
             Log in
           {/*go to home page*/}
           </Button>
-          <Button size="lg" block
+          <Button block
             onClick={async () => {
               const torus = new Torus();
               await torus.init();

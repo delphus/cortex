@@ -1,7 +1,7 @@
 import React from 'react'
 import web3Obj from './helper'
 
-class torLog extends React.Component {
+class TorusLogin extends React.Component {
   state = {
     account: '',
     balance: ''
@@ -37,7 +37,7 @@ class torLog extends React.Component {
 
   render() {
     return (
-      <div className="torLog">
+      <div className="TorusLogin">
         <div>
           <button onClick={this.enableTorus}>Start using Torus</button>
         </div>
@@ -51,4 +51,4 @@ class torLog extends React.Component {
   }
 }
 
-export default torLog
+export default TorusLogin
