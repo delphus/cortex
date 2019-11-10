@@ -7,6 +7,8 @@ authors = ["Kevin Liu <kevin@kliu.io>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 nucypher = {version = "^0.1.0-alpha.10", allows-prereleases = true}
+flask = "^1.1"
+flask_cors = "^3.0"
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
 
