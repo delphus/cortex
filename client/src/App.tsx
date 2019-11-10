@@ -27,7 +27,6 @@ function App({ drizzle }: any) {
     loading: true
   });
 
-
   useEffect(() => {
     const unsubscribe = drizzle.store.subscribe(() => {
       // every time the store updates, grab the state from drizzle
@@ -64,26 +63,40 @@ function App({ drizzle }: any) {
                 justifyContent: "space-between"
               }}
             >
-              <Typography.Title style={{ color: "white" }}>{/* this color got overrided by the Link*/}
-                <Link to="Dashboard">Dashboard</Link>
-              </Typography.Title>            
+              <Typography.Title style={{ color: "white", paddingTop: "5px" }}>
+                {/* this color got overrided by the Link*/}
+                <Link to="/dashboard">
+                  Cortex
+                </Link>
+              </Typography.Title>
               <Menu
                 theme="dark"
                 mode="horizontal"
                 defaultSelectedKeys={["1"]}
                 style={{ lineHeight: "64px" }}
               >
-                <Menu.Item ><Link to="/profile">Profile</Link></Menu.Item>
-                <Menu.Item ><Link to="/submit-attestation">Submit Attestation</Link></Menu.Item>
-                <Menu.Item ><Link to="/attest">Attest</Link></Menu.Item>
+                <Menu.Item>
+                  <Link to="/profile">Profile</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/submit-attestation">Submit Attestation</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/attest">Attest</Link>
+                </Menu.Item>
               </Menu>
             </Layout.Header>
-            <Layout.Content style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}>
+            <Layout.Content
+              style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}
+            >
               <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/profile" component={Profile} />
-                <Route path="/submit-attestation" component={SubmitAttestation} />
+                <Route
+                  path="/submit-attestation"
+                  component={SubmitAttestation}
+                />
                 <Route path="/attest" component={Attest} />
               </Switch>
             </Layout.Content>
