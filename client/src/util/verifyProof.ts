@@ -5,9 +5,9 @@ import Web3 from "web3";
 async function fetchProof({ svc, identifier }: Proof) {
   switch (svc) {
     case ServiceIds.HTTPS:
-      return await fetch(
-        `https://crossorigin.me/https://${identifier}/.well-known/cortex.txt`
-      ).then(r => r.text());
+      return (await fetch(
+        `https://cors-anywhere.herokuapp.com/https://${identifier}/.well-known/cortex.txt`
+      ).then(r => r.text())).trim();
     case ServiceIds.REDDIT:
     case ServiceIds.EMAIL:
       throw new Error("Not yet implemented!");
@@ -32,7 +32,7 @@ export default async function verifyProof(
       proof.identifier,
       fetched
     );
-    if (address === creator) {
+    if (address.toLowerCase() === creator.toLowerCase()) {
       return "Verified";
     } else {
       return "Proof signed by incorrect person";
