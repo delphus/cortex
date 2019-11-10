@@ -5,8 +5,6 @@ import ProofCreator from "./ProofCreator";
 //@ts-ignore
 import Identicon, { jsNumberForAddress } from "react-jazzicon";
 
-
-
 /*the profile picture has been moved to the ProofCreator file instead
  and import Identicon, { jsNumberForAddress } from "react-jazzicon"; was used instead
 */
@@ -20,6 +18,7 @@ export default function Profile() {
   return (
     <>
       <ProofCreator />
+      <ProfileCard address={readinessState.drizzleState.accounts[0]} />
     </>
   );
 }

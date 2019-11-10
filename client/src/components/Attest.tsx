@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Form, Button, Input, Modal } from "antd";
 import { FormComponentProps } from "antd/lib/form";
 import { DrizzleContext } from "../App";
-import ServiceIds from "../data/ServiceIds";
 import QRCode from "qrcode.react";
 
 function SubmitAttestation({ form }: FormComponentProps) {
