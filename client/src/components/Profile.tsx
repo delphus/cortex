@@ -4,7 +4,7 @@ import ProfileCard from "./ProfileCard";
 import ProofCreator from "./ProofCreator";
 //@ts-ignore
 import Identicon, { jsNumberForAddress } from "react-jazzicon";
-import {Table} from "antd"
+import { Table } from "antd";
 import ServiceId from "../data/ServiceIds";
 import Proof from "../data/Proof";
 import verifyProof from "../util/verifyProof";
@@ -18,55 +18,70 @@ import verifyProof from "../util/verifyProof";
 export default function Profile() {
   // const status = useContext(DrizzleContext);
   const { drizzle, readinessState } = useContext(DrizzleContext);
-  const [dataSource, setDataSource] = useState<{ identifier: string, proof:string }[]>([{}] as any)
+  const [dataSource, setDataSource] = useState<
+    { identifier: string; proof: string }[]
+  >([{}] as any);
 
-  let address = readinessState.drizzleState.accounts[0]
+  let address = readinessState.drizzleState.accounts[0];
   //TODO hook this up with the backend
-  
 
   useEffect(() => {
     (async () => {
       const Cortex = drizzle.contracts.Cortex;
       console.log(Cortex);
-      const svcs = [ServiceId.HTTPS, ServiceId.EMAIL, ServiceId.REDDIT];
+      const svcs = [
+        ServiceId.HTTPS,
+        ServiceId.EMAIL,
+        ServiceId.REDDIT,
+        ServiceId.ETHEREUM
+      ];
+      const p = [];
       for (const svc of svcs) {
-        const { identifier } = await Cortex.methods
-          .getProofFromUser(address, svc)
-          .call();
-        const result = await verifyProof(
-          drizzle.web3,
-          { identifier, svc },
-          readinessState.drizzleState.accounts[0]
-        );
+        const res = await Cortex.methods.getProofFromUser(address, svc).call();
+        console.log("Fetching " + svc + " => ", res);
+        const { identifier, meta } = res;
         if (identifier !== "") {
-          setDataSource([...dataSource, { identifier: identifier , proof: result.toString() }])
+          if (svc === ServiceId.ETHEREUM) {
+            try {
+              console.log(identifier, meta);
+              drizzle.web3.eth.personal.ecRecover(address, meta!);
+              p.push({ identifier: "Attestation from " + identifier, proof: "Verified" });
+            } catch (e) {
+              p.push({ identifier: "Attestation from " + identifier, proof: "Failed to verify EC" });
+            }
+          } else {
+            const result = await verifyProof(
+              drizzle.web3,
+              { identifier, svc },
+              readinessState.drizzleState.accounts[0]
+            );
+            p.push({ identifier: identifier, proof: result.toString() });
+          }
         }
       }
+      setDataSource(p);
     })();
   }, [address, drizzle]);
 
-
   const columns = [
     {
-      title: 'Identifier',
-      dataIndex: 'identifier',
-      key: 'identifier',
+      title: "Identifier",
+      dataIndex: "identifier",
+      key: "identifier"
     },
     {
-      title: 'Proof',
-      dataIndex: 'proof',
-      key: 'proof',
-    },
-  ]
+      title: "Proof",
+      dataIndex: "proof",
+      key: "proof"
+    }
+  ];
 
-  console.log("length "+ dataSource.length)
+  console.log("length " + dataSource.length);
   return (
     <>
-      <ProfileCard address={address}></ProfileCard>
       <Table dataSource={dataSource} columns={columns} />
 
       <ProofCreator />
-      <ProfileCard address={readinessState.drizzleState.accounts[0]} />
     </>
   );
 }
