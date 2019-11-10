@@ -7,7 +7,8 @@ import LogoGather from './logoGather.js';
 import Web3 from 'web3';
 import Fortmatic from 'fortmatic';
 import { ReactComponent as YourSvg } from '../images/interesting.svg';
-
+import DrizzleContext from '../App.tsx'
+import {withRouter} from 'react-router-dom'
 
 
 const TorusLogo = require('../images/torus.png');
