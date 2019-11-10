@@ -1,13 +1,16 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import './login.css';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
 import Torus from "@toruslabs/torus-embed";
 import LogoGather from './logoGather.js';
+import Web3 from 'web3';
+import Fortmatic from 'fortmatic';
 
-// import Web3 from "web3";
+
 
 class NormalLoginForm extends React.Component {
+  
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -22,43 +25,37 @@ class NormalLoginForm extends React.Component {
     return (
       <>
         <LogoGather />
+        <img style={{position: "absolute", zIndex: "5000", width:"150px", paddingLeft:"10px"}} src="../images/cortex.png"/>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "150px" }}>
+        <Card title= "Enter Cortex" bordered={false} style={{width:350}}>
           <div style={{ width: "300px" }}>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
-                {getFieldDecorator('username', {
-                  rules: [{ required: true, message: 'Please input your username!' }],
-                })(
-                  <Input
-                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    placeholder="Username"
-                  />,
-                )}
-                {getFieldDecorator('password', {
-                  rules: [{ required: true, message: 'Please input your Password!' }],
-                })(
-                  <Input
-                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    type="password"
-                    placeholder="Password"
-                  />,
-                )}
-                {getFieldDecorator('remember', {
-                  valuePropName: 'checked',
-                  initialValue: true,
-                })(<Checkbox>Remember me</Checkbox>)}
-                <br></br>
-                Or <a href="https://delph.us/">register now!</a>
-                {/* The above link is for a registration service and is thus temporary */}
-                <a className="login-form-forgot" href="https://delph.us/">
-                  {/* The above link is for a password retrieval service and is thus temporary */}
-                  Forgot password
-          </a>
-                <Button onClick={() => { window.location = '/dashboard' }} type="primary" htmlType="submit" className="login-form-button">
-                  Log in
-          {/*go to home page*/}
+              <Button ghost onClick={() => { window.location = '/dashboard' }} style={{borderColor: "#ffc145", color: "#ffc145"}} htmlType="submit" className="login-form-button">
+                  Continue with Metamask &nbsp; <img width="15px" style={{paddingBottom: "3.7px"}} src="../../images/metamask.png" />      
+                {/*go to home page*/}
                 </Button>
-                <Button block
+              </Form.Item>
+              <Form.Item>
+                <Button ghost style={{borderColor: "#c966ff", color: "#c966ff"}} block
+                  onClick={async () => {
+                    const fm = new Fortmatic('pk_test_3BCE30A5FCFF1300');
+                    const web3 = new Web3(fm.getProvider());
+                    web3.currentProvider.enable();
+
+                    // Async functions that triggers login modal, if user not already logged in
+                    web3.eth.getAccounts().then((accounts) => {
+                      console.log(accounts); // ['0x...']
+                    });
+                    web3.eth.getCoinbase().then((coinbase) => {
+                       console.log(coinbase) // '0x...'
+                    });
+                  }}>
+                  Connect via Fortmatic &nbsp; <img width="15px" style={{paddingBottom: "3.7px"}} src="../../images/fortmatic.png" />
+                </Button>
+              </Form.Item>
+              <Form.Item>   
+                <Button ghost block
                   onClick={async () => {
                     const torus = new Torus();
                     await torus.init();
@@ -67,13 +64,19 @@ class NormalLoginForm extends React.Component {
                     torus.login({
                       verifier: 'google'
                     })
-                  }}>
-                  Connect via Torus
+                  }} type="primary">
+                  Connect via Torus <img width="17px" style={{paddingBottom: "3.7px", paddingLeft:"2px"}} src="../../images/torus.png" />
           </Button>
-              </Form.Item>
-            </Form>
+          <Form.Item></Form.Item>
+          Need help? <a href="">Click here!</a>
+                {/* The above link is for a registration service and is thus temporary */}
+             <br />Meet <a target="_blank" href="https://scintillating.us/#our-team" style={{position:"middle"}}>the Team!</a>
+             </Form.Item>
+             </Form>
           </div>
+          </Card>
         </div>
+        
       </>
     );
   }

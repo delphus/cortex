@@ -43,8 +43,7 @@ class TorusLogin extends React.Component {
         </div>
         <div>
           {/* <button onClick={this.enableTorus}>Enable Torus</button> */}
-          <div>Account: {this.state.account}</div>
-          <div>Balance: {this.state.balance}</div>
+      
         </div>
       </div>
     )
