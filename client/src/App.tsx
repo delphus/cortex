@@ -46,7 +46,7 @@ function App({ drizzle }: any) {
   }, [drizzle.store, drizzleReadinessState]);
 
   return drizzleReadinessState.loading ? (
-    <>Loading Drizzle...</>
+    <></>
   ) : (
     <DrizzleContext.Provider
       value={{ drizzle, readinessState: drizzleReadinessState }}

@@ -6,6 +6,10 @@ import Torus from "@toruslabs/torus-embed";
 import LogoGather from './logoGather.js';
 import Web3 from 'web3';
 import Fortmatic from 'fortmatic';
+import { ReactComponent as YourSvg } from '../images/interesting.svg';
+
+
+
 const TorusLogo = require('../images/torus.png');
 const FortmaticLogo = require('../images/fortmatic.png');
 const MetaMaskLogo = require('../images/metamask.png');
@@ -33,7 +37,7 @@ class NormalLoginForm extends React.Component {
         <LogoGather />
         <img style={{position: "absolute", zIndex: "5000", width:"150px", top:"0", left:"25px"}} src={CortexLogo}/>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-        <Card title= "Enter Cortex" bordered={false} style={{width:350}}>
+        <Card title= "Enter Cortex" bordered={false} style={{width:350, marginTop:"100px"}}>
           <div style={{ width: "300px" }}>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <Form.Item>
@@ -80,7 +84,7 @@ class NormalLoginForm extends React.Component {
              </Form>
           </div>
           <div style={{textAlign: "center"}}>
-                   Learn More <br /> 
+                   Learn More<br /> 
                    <img width="10px" src={DownArrow} />
                    <img width="10px" src={DownArrow} />
                    <img width="10px" src={DownArrow} />
@@ -89,9 +93,33 @@ class NormalLoginForm extends React.Component {
       
         </div>
 
-        <Card style={{marginTop:"1000px"}}>
-            <div>
-               <p></p>    
+        <Card style={{marginTop:"300px"}}>
+            <div style={{justifyContent: "center", alignItems: "center"}}>
+               <h1>What is Cortex?</h1> 
+               <br />
+                <p>
+                <YourSvg width="500px" style={{alignSelf: "center", paddingLeft:"20%"}}/> <br /> <br />
+                  With more and more people getting access to the internet, it has become 
+                  increasingly important to preserve one's identity, whether it's for work, 
+                  communication or anything else. <br /> <br />
+
+                  However, one of the few proof-based identity management platforms that exist 
+                  called KeyBase, is completely centralized, and as such, has the power to 
+                  remove or prohibit people from using its system. This can be damaging to people 
+                  who may have information against authorities or for even smaller issues such as 
+                  nationality and/or geographic location. <br /> <br />
+
+                  
+
+              
+
+        
+
+  
+
+
+                </p>    
+
             </div>
           </Card>
         

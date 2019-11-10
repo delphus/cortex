@@ -174,7 +174,7 @@ export default class LogoGather extends React.Component {
 
   render() {
     return (
-      <div className="logo-gather-demo-wrapper" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
+      <div className="logo-gather-demo-wrapper" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}>
         <canvas id="canvas" />
         <TweenOne
           animation={this.state.boxAnim}
