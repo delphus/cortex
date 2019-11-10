@@ -25,11 +25,11 @@ function ProofEntry({ proof }: { proof: Proof }) {
         setErr(res);
       }
     })();
-  });
+  }, [proof, drizzle, readinessState.drizzleState.accounts]);
 
   return (
     <>
-      {proof.identifier} {proof.svc} {verified} {err}
+      {proof.identifier} {proof.svc} {verified && verified.toString()} {err}
     </>
   );
 }

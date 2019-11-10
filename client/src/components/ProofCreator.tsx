@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { DrizzleContext } from "../App";
-import { Steps, Button, Input, Select, message } from "antd";
+import { Steps, Button, Input, Select, message, Result } from "antd";
 import styled from "styled-components";
 import ServiceIds from "../data/ServiceIds";
 import verifyProof from "../util/verifyProof";
@@ -29,12 +29,16 @@ export default function ProofCreator() {
         <>
           <p>Select an identity to prove:</p>
 
-          <Select onChange={setSvc}>
+          <Select onChange={setSvc} style={{ width: "200px" }}>
             <Select.Option value={0}>Website (HTTPS)</Select.Option>
           </Select>
 
+          <br />
+          <br />
+
           <p>
             <Input
+              style={{ width: "200px" }}
               onChange={e => setIdentifier(e.target.value)}
               value={identifier}
               placeholder={
@@ -110,6 +114,11 @@ export default function ProofCreator() {
                 message.info(result);
 
                 if (result === "Verified") {
+                  await drizzle.contracts.Cortex.methods.setProof(
+                    svc,
+                    identifier,
+                    drizzle.web3.utils.asciiToHex("")
+                  ).send();
                   setCurrent(3);
                 }
               }}
@@ -122,7 +131,19 @@ export default function ProofCreator() {
     },
     {
       title: "Verified!",
-      content: "Last-content"
+      content: (
+        <Result
+          status="success"
+          title="Successfully verified identity!"
+          // TODO change on multiple types of identities
+          subTitle="You've successfully linked your Ethereum account with your web identity."
+          extra={[
+            <Button type="primary" href="/profile">
+              Go to Profile
+            </Button>
+          ]}
+        />
+      )
     }
   ];
 
