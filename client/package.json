@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@toruslabs/torus-embed": "^0.2.6",
+    "@types/qrcode.react": "^0.9.0",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@types/react-router-dom": "^5.1.2",
@@ -15,6 +16,7 @@
     "enzyme-adapter-react-16": "^1.14.0",
     "fortmatic": "^1.0.0",
     "prop-types": "^15.7.2",
+    "qrcode.react": "^1.0.0",
     "rc-tween-one": "^2.6.5",
     "react": "^16.11",
     "react-copy-to-clipboard": "^5.0.2",

@@ -7,10 +7,13 @@ contract Cortex {
   // *Potential* reverse proofs - require manual validation
   mapping (uint => mapping (string => address[])) private proofsReverseIndex;
 
+  event ProofCreation(uint _svcId, address _creator, string _identifier, bytes _meta);
+
   function setProof(uint _svcId, string calldata _identifier, bytes calldata _meta) external {
     proofs[msg.sender][_svcId] = _identifier;
     proofsReverseIndex[_svcId][_identifier].push(msg.sender);
     proofMeta[msg.sender][_svcId] = _meta;
+    emit ProofCreation(_svcId, msg.sender, _identifier, _meta);
   }
 
   function getProofFromSvc(uint _svcId, string calldata _identifier) external view

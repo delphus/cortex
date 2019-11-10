@@ -18,7 +18,7 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
 // const fs = require('fs');
@@ -26,6 +26,16 @@
 
 const path = require("path");
 
+const mnemonic = process.env.MNEMONIC;
+
 module.exports = {
-  contracts_build_directory: path.join(__dirname, "client/src/contracts")
+  contracts_build_directory: path.join(__dirname, "client/src/contracts"),
+  networks: {
+    ropsten: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/b81c00acfa254c5dbefa77dd3a3b588e")
+      },
+      network_id: 3
+    }   
+  }
 };
