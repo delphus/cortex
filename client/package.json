@@ -27,6 +27,7 @@
     "react-scripts": "3.2.0",
     "react-test-renderer": "^16.8.6",
     "routes": "^2.1.0",
+    "serve": "^11.2.0",
     "styled-components": "^4.4.1",
     "torus": "^0.0.3",
     "web3": "^1.2.2"

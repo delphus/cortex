@@ -3,21 +3,18 @@ import "antd/dist/antd.css";
 import "./login.css";
 import { Form, Icon, Input, Button, Checkbox, Card } from "antd";
 import Torus from "@toruslabs/torus-embed";
-import LogoGather from './logoGather.js';
-import Web3 from 'web3';
-import Fortmatic from 'fortmatic';
-import { ReactComponent as YourSvg } from '../images/interesting.svg';
-import DrizzleContext from '../App.tsx'
-import {withRouter} from 'react-router-dom'
+import LogoGather from "./logoGather.js";
+import Web3 from "web3";
+import Fortmatic from "fortmatic";
+import { ReactComponent as YourSvg } from "../images/interesting.svg";
+import { DrizzleContext } from "../App";
+import { withRouter } from "react-router-dom";
 
-
-const TorusLogo = require('../images/torus.png');
-const FortmaticLogo = require('../images/fortmatic.png');
-const MetaMaskLogo = require('../images/metamask.png');
-const DownArrow = require('../images/downarrow.jpg');
-const CortexLogo = require('../images/cortex.png');
-
-
+const TorusLogo = require("../images/torus.png");
+const FortmaticLogo = require("../images/fortmatic.png");
+const MetaMaskLogo = require("../images/metamask.png");
+const DownArrow = require("../images/downarrow.jpg");
+const CortexLogo = require("../images/cortex.png");
 
 class NormalLoginForm extends React.Component {
   static contextType = DrizzleContext;
@@ -63,7 +60,7 @@ class NormalLoginForm extends React.Component {
                   <Button
                     ghost
                     onClick={() => {
-                      window.location = "/#/dashboard";
+                      window.location = "#/dashboard";
                     }}
                     style={{ borderColor: "#ffc145", color: "#ffc145" }}
                     htmlType="submit"
@@ -84,9 +81,14 @@ class NormalLoginForm extends React.Component {
                     style={{ borderColor: "#c966ff", color: "#c966ff" }}
                     block
                     onClick={async () => {
-                      const fm = new Fortmatic("pk_test_3BCE30A5FCFF1300");
+                      const fm = new Fortmatic(
+                        "pk_test_3BCE30A5FCFF1300",
+                        "ropsten"
+                      );
                       const web3 = new Web3(fm.getProvider());
                       web3.currentProvider.enable();
+
+                      console.log(this.context);
 
                       this.context.drizzle.web3.setProvider(
                         web3.currentProvider

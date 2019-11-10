@@ -6,12 +6,13 @@ async function fetchProof({ svc, identifier }: Proof) {
   switch (svc) {
     case ServiceIds.HTTPS:
       return (await fetch(
-        `https://cors-anywhere.herokuapp.com/https://${identifier}/.well-known/cortex.txt`
+        // `https://cors-anywhere.herokuapp.com/https://${identifier}/.well-known/cortex.txt`
+        `https://${identifier}/.well-known/cortex.txt`
       ).then(r => r.text())).trim();
     case ServiceIds.REDDIT:
     case ServiceIds.ETHEREUM:
     case ServiceIds.EMAIL:
-      throw new Error("Not yet implemented!");
+      throw new Error("Not yet implemented! " + svc);
   }
 }
 
