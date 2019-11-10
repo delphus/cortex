@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { DASHBOARD, LOGIN } from "./route";
@@ -24,6 +24,7 @@ function App({ drizzle }: any) {
     drizzleState: null,
     loading: true
   });
+
 
   useEffect(() => {
     const unsubscribe = drizzle.store.subscribe(() => {
@@ -63,16 +64,16 @@ function App({ drizzle }: any) {
             >
               <Typography.Title style={{ color: "white" }}>
                 Dashboard
-              </Typography.Title>
+              </Typography.Title>            
               <Menu
                 theme="dark"
                 mode="horizontal"
                 defaultSelectedKeys={["2"]}
                 style={{ lineHeight: "64px" }}
               >
-                <Menu.Item key="1">Lookup User</Menu.Item>
-                <Menu.Item key="2">Profile</Menu.Item>
-                <Menu.Item key="3">nav 3</Menu.Item>
+                <Menu.Item ><Link to="LookupUser">Lookup User</Link></Menu.Item>
+                <Menu.Item ><Link to="Profile">Profile</Link></Menu.Item>
+                <Menu.Item ><Link to="thing">Nav 3</Link></Menu.Item>
               </Menu>
             </Layout.Header>
             <Layout.Content style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}>
