@@ -24,8 +24,8 @@ export default class LogoGather extends React.Component {
 
   static defaultProps = {
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/1200px-Square_-_black_simple.svg.png',
-    w: 500,
-    h: 500,
+    w: 200,
+    h: 300,
     pixSize: 20,
     pointSizeMin: 10,
   };
