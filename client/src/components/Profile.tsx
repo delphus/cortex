@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { DrizzleContext } from "../App";
+import ProfileCard from "./ProfileCard";
 
 export default function Profile() {
-  const { drizzle } = useContext(DrizzleContext);
+  const status = useContext(DrizzleContext);
 
-  console.log(drizzle);
+  console.log(status);
 
-  return null;
+  return <ProfileCard address={status.readinessState.drizzleState.accounts[0]} />;
 }
