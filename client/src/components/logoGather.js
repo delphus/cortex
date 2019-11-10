@@ -9,6 +9,7 @@ import { enquireScreen } from 'enquire-js';
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./logoGather.css"
 
 const RadioGroup = Radio.Group;
 
@@ -23,8 +24,8 @@ export default class LogoGather extends React.Component {
 
   static defaultProps = {
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Square_-_black_simple.svg/1200px-Square_-_black_simple.svg.png',
-    w: 300,
-    h: 300,
+    w: 500,
+    h: 500,
     pixSize: 20,
     pointSizeMin: 10,
   };
@@ -173,7 +174,7 @@ export default class LogoGather extends React.Component {
 
   render() {
     return (
-      <div className="logo-gather-demo-wrapper">
+      <div className="logo-gather-demo-wrapper" style={{ position: "absolute", top: 0, left: 0, width: "100vw", height: "100vh" }}>
         <canvas id="canvas" />
         <TweenOne
           animation={this.state.boxAnim}

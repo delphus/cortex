@@ -25,9 +25,9 @@
   
   .logo-gather-demo-wrapper {
     position: relative;
-    background: #019BF0;
+    background: #b0acaa;
     overflow: hidden;
-    height: 500px;
+    height: 400px;
   }
   
   .logo-gather-demo-wrapper .point-wrapper {
@@ -39,8 +39,8 @@
   }
   
   .logo-gather-demo-wrapper .right-side {
-    width: 300px;
-    height: 360px;
+    width: 500px;
+    height: 100vh;
     position: absolute;
     right: 0;
     top: 0;
