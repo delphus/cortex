@@ -45,7 +45,7 @@ function App({ drizzle }: any) {
   }, [drizzle.store, drizzleReadinessState]);
 
   return drizzleReadinessState.loading ? (
-    <></>
+    <>Loading Drizzle... switch network to Ropsten if this message persists.</>
   ) : (
     <DrizzleContext.Provider
       value={{ drizzle, readinessState: drizzleReadinessState }}
