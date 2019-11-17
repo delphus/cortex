@@ -1,19 +1,6 @@
 {
-  "Alice": {
-    "0": {
-      "verification_key": "026b637ece9777693cba21904014417b3438bc7c2d87bb523bdd97fcf28cd99ee9"
-    }
-  },
-  "Bob": {
-    "0": {
-      "verification_key": "0218f2505af29a72db8f674c8f3fed8e888b0911305481842449b4c437c968b3da",
-      "encryption_key": "02a3d5fec3207650f778e7330f71199c7b3a4158d9048426846c71b0f262cc5888"
-    },
-    "1": {
-      "verification_key": "030f398643b0e8a5edaaa24b8ebeacff98eea492342c47d6a4fdeb33a279643f53",
-      "encryption_key": "03894f6ba1cc873c4093ff3aa9c5b427897203b962371db1853fbcb6e3e40a6def"
-    }
-  },
+  "Alice": {},
+  "Bob": {},
   "Enrico": {},
   "policy_encrypting_key": "02a14bfc3f993d2aea7740727e0e4c7993b71eeedbb784e4fe703a19c0a8a15e4b"
 }

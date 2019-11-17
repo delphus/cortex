@@ -7,6 +7,7 @@ const policyName = "admin";
 let alicePortIndex = 3000;
 let bobPortIndex = 4000;
 let enricoPortIndex = 5000;
+const sleep = require("sleep-async")().Promise;
 const util = require("../lib/util");
 const config = {
   Alice: {},
@@ -143,6 +144,8 @@ const runner = async noOfBob => {
     startBob(bobPortIndex);
     bobPortIndex++;
   }
+
+  await sleep.sleep(10000);
 
   const policyEncryptingKey = await createPolicy(
     `http://localhost:${alicePortIndex}`,

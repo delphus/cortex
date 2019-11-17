@@ -1,14 +1,14 @@
 import React, { Suspense, lazy } from "react";
 import { Switch, Route, HashRouter as Router, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
 import { DASHBOARD, LOGIN } from "./route";
 import Web3 from "web3";
-import Profile from "./components/Profile";
-import { Layout, Typography, Menu, Icon } from "antd";
+import { Layout, Typography, Menu } from "antd";
 import "antd/dist/antd.css";
 import SubmitAttestation from "./components/SubmitAttestation";
 import Attest from "./components/Attest";
+import SubmitData from "./components/SubmitData";
+import YourProfile from "./components/YourProfile";
 
 const Dashboard = lazy(DASHBOARD);
 const Login = lazy(LOGIN);
@@ -84,6 +84,9 @@ function App({ drizzle }: any) {
                 <Menu.Item>
                   <Link to="/attest">Attest</Link>
                 </Menu.Item>
+                <Menu.Item>
+                  <Link to="/submit-data">Submit Data</Link>
+                </Menu.Item>
               </Menu>
             </Layout.Header>
             <Layout.Content
@@ -92,12 +95,13 @@ function App({ drizzle }: any) {
               <Switch>
                 <Route path="/" exact component={Login} />
                 <Route path="/dashboard" component={Dashboard} />
-                <Route path="/profile" component={Profile} />
+                <Route path="/profile" component={YourProfile} />
                 <Route
                   path="/submit-attestation"
                   component={SubmitAttestation}
                 />
                 <Route path="/attest" component={Attest} />
+                <Route path="/submit-data" component={SubmitData} />
               </Switch>
             </Layout.Content>
           </Layout>

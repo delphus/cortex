@@ -1,29 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DrizzleContext } from "../App";
-import ProfileCard from "./ProfileCard";
-import ProofCreator from "./ProofCreator";
-//@ts-ignore
-import Identicon, { jsNumberForAddress } from "react-jazzicon";
 import { Table } from "antd";
 import ServiceId from "../data/ServiceIds";
-import Proof from "../data/Proof";
 import verifyProof from "../util/verifyProof";
+//@ts-ignore
+import Identicon, { jsNumberForAddress } from "react-jazzicon";
 
-/*the profile picture has been moved to the ProofCreator file instead
- and import Identicon, { jsNumberForAddress } from "react-jazzicon"; was used instead
-*/
-
-// const dataSource: {identifier:string, status:string, proof:string}[] = [];
-
-export default function Profile() {
-  // const status = useContext(DrizzleContext);
+export default function Profile({ address }: { address: string }) {
   const { drizzle, readinessState } = useContext(DrizzleContext);
   const [dataSource, setDataSource] = useState<
     { identifier: string; proof: string }[]
   >([{}] as any);
-
-  let address = readinessState.drizzleState.accounts[0];
-  //TODO hook this up with the backend
 
   useEffect(() => {
     (async () => {
@@ -45,9 +32,15 @@ export default function Profile() {
             try {
               console.log(identifier, meta);
               drizzle.web3.eth.personal.ecRecover(address, meta!);
-              p.push({ identifier: "Attestation from " + identifier, proof: "Verified" });
+              p.push({
+                identifier: "Attestation from " + identifier,
+                proof: "Verified"
+              });
             } catch (e) {
-              p.push({ identifier: "Attestation from " + identifier, proof: "Failed to verify EC" });
+              p.push({
+                identifier: "Attestation from " + identifier,
+                proof: "Failed to verify EC"
+              });
             }
           } else {
             const result = await verifyProof(
@@ -79,9 +72,14 @@ export default function Profile() {
   console.log("length " + dataSource.length);
   return (
     <>
+      <h1>
+        <Identicon
+          seed={jsNumberForAddress(readinessState.drizzleState.accounts[0])}
+          diameter={32}
+        />{" "}
+        Profile of <code>{address}</code>
+      </h1>
       <Table dataSource={dataSource} columns={columns} />
-
-      <ProofCreator />
     </>
   );
 }
