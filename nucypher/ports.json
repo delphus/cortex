@@ -1,0 +1,16 @@
+{
+  "Alice": {
+    "0": {
+      "verification_key": "02d4abc53a82002eef4c6d94f227dbed6c194712d5884032e9688bee1512bd01b3"
+    }
+  },
+  "Bob": {
+    "0": {},
+    "1": {
+      "verification_key": "0259c14e7a49bb7438db8ecb7553a075b5af00fa1bcc5e3e3557f85af26c4f8968",
+      "encryption_key": "03f4221b0ad62c176582baf578152a8ad701f8c1cb47a4fb9cf9156f70e8ac5242"
+    }
+  },
+  "Enrico": {},
+  "policy_encrypting_key": "03c45c21d8de5eb89e00e577abfa509fe61ef420e993bc8c969bc6dbfdf506effc"
+}

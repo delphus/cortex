@@ -1,6 +1,6 @@
 const http = require('axios');
 const request = require("request");
-const config = require("./config.json.js");
+const config = require("../config.json");
 const cors = require('cors');
 
 

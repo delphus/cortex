@@ -1,0 +1,22 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "runner.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^8.3.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently --kill-others \"node setup/runner.js\" \"node server/proxy.js\""
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -1,15 +1,13 @@
-// Code from Selective-ZKP / NuAztec, EthIndia
 const { exec } = require("child_process");
 const http = require("axios");
 const fs = require("fs");
 
 const URSULA_URL = "localhost:10151";
 const policyName = "admin";
-let alicePortIndex = 4000;
-let bobPortIndex = 5000;
-let enricoPortIndex = 6000;
-const util = require("./util");
-// Stores verification keys
+let alicePortIndex = 3000;
+let bobPortIndex = 4000;
+let enricoPortIndex = 5000;
+const util = require("../lib/util");
 const config = {
   Alice: {},
   Bob: {},
@@ -145,8 +143,6 @@ const runner = async noOfBob => {
     startBob(bobPortIndex);
     bobPortIndex++;
   }
-
-  console.log("Started all Bobs and Alices and Ursulas");
 
   const policyEncryptingKey = await createPolicy(
     `http://localhost:${alicePortIndex}`,
