@@ -119,3 +119,5 @@ package-lock.json
 # End of https://www.gitignore.io/api/node,soliditytruffle
 
 __pycache__
+# Local Netlify folder
+.netlify

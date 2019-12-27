@@ -1,19 +1,7 @@
 {
-  "devDependencies": {
-    "truffle": "^5.0.44"
-  },
-  "dependencies": {
-    "@dfuse/client": "^0.3.0",
-    "axios": "^0.19.0",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "ipfs-http-client": "^39.0.2",
-    "node-fetch": "^2.6.0",
-    "react-dom": "^16.11.0",
-    "reactdom": "^2.0.0",
-    "request": "^2.88.0",
-    "truffle-hdwallet-provider": "^1.0.17",
-    "ws": "^7.2.0"
+  "private": true,
+  "workspaces": ["contracts", "client"],
+  "scripts": {
+    "build": "cd contracts && yarn build && cd ../client && yarn build"
   }
 }

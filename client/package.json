@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5500",
+  "browser": "https://mycortex.tech",
   "homepage": ".",
   "dependencies": {
     "@toruslabs/torus-embed": "^0.2.6",

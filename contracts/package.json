@@ -1,0 +1,13 @@
+{
+  "name": "cortex-contracts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "AGPL-3.0+",
+  "scripts": {
+    "build": "truffle build"
+  },
+  "devDependencies": {
+    "truffle": "^5.1.5",
+    "truffle-hdwallet-provider": "^1.0.17"
+  }
+}
