@@ -3,7 +3,7 @@ import { Switch, Route, HashRouter as Router, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { DASHBOARD, LOGIN } from "./route";
 import Web3 from "web3";
-import { Layout, Typography, Menu } from "antd";
+import { Layout, Typography, Menu, Alert } from "antd";
 import "antd/dist/antd.css";
 import SubmitAttestation from "./components/SubmitAttestation";
 import Attest from "./components/Attest";
@@ -44,70 +44,79 @@ function App({ drizzle }: any) {
     };
   }, [drizzle.store, drizzleReadinessState]);
 
-  return drizzleReadinessState.loading ? (
-    <>Loading Drizzle... switch network to Ropsten if this message persists.</>
-  ) : (
-    <DrizzleContext.Provider
-      value={{ drizzle, readinessState: drizzleReadinessState }}
-    >
-      <Suspense
-        // Show no fallback for the support widget
-        fallback={<></>}
-      >
-        <Router>
-          <Layout>
-            <Layout.Header
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between"
-              }}
-            >
-              <Typography.Title style={{ color: "white", paddingTop: "5px" }}>
-                {/* this color got overrided by the Link*/}
-                <Link to="/dashboard">
-                  Cortex
-                </Link>
-              </Typography.Title>
-              <Menu
-                theme="dark"
-                mode="horizontal"
-                defaultSelectedKeys={["1"]}
-                style={{ lineHeight: "64px" }}
+  return (
+    <Router>
+      <Suspense fallback={<></>}>
+        {drizzleReadinessState.loading ? (
+          <>
+            <Alert
+              banner
+              type="warning"
+              message="Loading Drizzle... switch network to Ropsten if this message persists."
+              style={{ zIndex: 50000 }}
+            ></Alert>
+            <Login />
+          </>
+        ) : (
+          <DrizzleContext.Provider
+            value={{ drizzle, readinessState: drizzleReadinessState }}
+          >
+            <Layout>
+              <Layout.Header
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between"
+                }}
               >
-                <Menu.Item>
-                  <Link to="/profile">Profile</Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link to="/submit-attestation">Submit Attestation</Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link to="/attest">Attest</Link>
-                </Menu.Item>
-                <Menu.Item>
-                  <Link to="/submit-data">Submit Data</Link>
-                </Menu.Item>
-              </Menu>
-            </Layout.Header>
-            <Layout.Content
-              style={{ padding: "16px", maxWidth: "1080px", margin: "0 auto" }}
-            >
-              <Switch>
-                <Route path="/" exact component={Login} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/profile" component={YourProfile} />
-                <Route
-                  path="/submit-attestation"
-                  component={SubmitAttestation}
-                />
-                <Route path="/attest" component={Attest} />
-                <Route path="/submit-data" component={SubmitData} />
-              </Switch>
-            </Layout.Content>
-          </Layout>
-        </Router>
+                <Typography.Title style={{ color: "white", paddingTop: "5px" }}>
+                  {/* this color got overrided by the Link*/}
+                  <Link to="/dashboard">Cortex</Link>
+                </Typography.Title>
+                <Menu
+                  theme="dark"
+                  mode="horizontal"
+                  defaultSelectedKeys={["1"]}
+                  style={{ lineHeight: "64px" }}
+                >
+                  <Menu.Item>
+                    <Link to="/profile">Profile</Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link to="/submit-attestation">Submit Attestation</Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link to="/attest">Attest</Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link to="/submit-data">Submit Data</Link>
+                  </Menu.Item>
+                </Menu>
+              </Layout.Header>
+              <Layout.Content
+                style={{
+                  padding: "16px",
+                  maxWidth: "1080px",
+                  margin: "0 auto"
+                }}
+              >
+                <Switch>
+                  <Route path="/" exact component={Login} />
+                  <Route path="/dashboard" component={Dashboard} />
+                  <Route path="/profile" component={YourProfile} />
+                  <Route
+                    path="/submit-attestation"
+                    component={SubmitAttestation}
+                  />
+                  <Route path="/attest" component={Attest} />
+                  <Route path="/submit-data" component={SubmitData} />
+                </Switch>
+              </Layout.Content>
+            </Layout>
+          </DrizzleContext.Provider>
+        )}
       </Suspense>
-    </DrizzleContext.Provider>
+    </Router>
   );
 }
 
