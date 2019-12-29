@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "./login.css";
-import { Form, Icon, Input, Button, Checkbox, Card } from "antd";
+import { Form, Button, Card } from "antd";
 import Torus from "@toruslabs/torus-embed";
 import LogoGather from "./logoGather.js";
 import Web3 from "web3";
@@ -40,6 +40,7 @@ class NormalLoginForm extends React.Component {
             top: "0",
             left: "25px"
           }}
+          alt="Cortex"
           src={CortexLogo}
         />
         <div
@@ -71,6 +72,7 @@ class NormalLoginForm extends React.Component {
                       width="15px"
                       style={{ paddingBottom: "3.7px" }}
                       src={MetaMaskLogo}
+                      alt=""
                     />
                     {/*go to home page*/}
                   </Button>
@@ -102,6 +104,7 @@ class NormalLoginForm extends React.Component {
                       width="15px"
                       style={{ paddingBottom: "3.7px" }}
                       src={FortmaticLogo}
+                      alt=""
                     />
                   </Button>
                 </Form.Item>
@@ -128,10 +131,10 @@ class NormalLoginForm extends React.Component {
                       width="17px"
                       style={{ paddingBottom: "3.7px", paddingLeft: "2px" }}
                       src={TorusLogo}
+                      alt=""
                     />
                   </Button>
                   <Form.Item></Form.Item>
-                  Need help? <a href="">Click here!</a>
                   {/* The above link is for a registration service and is thus temporary */}
                 </Form.Item>
               </Form>
@@ -139,9 +142,9 @@ class NormalLoginForm extends React.Component {
             <div style={{ textAlign: "center" }}>
               Learn More
               <br />
-              <img width="10px" src={DownArrow} />
-              <img width="10px" src={DownArrow} />
-              <img width="10px" src={DownArrow} />
+              <img width="10px" src={DownArrow} alt="" />
+              <img width="10px" src={DownArrow} alt="" />
+              <img width="10px" src={DownArrow} alt="" />
             </div>
           </Card>
         </div>

@@ -54,7 +54,7 @@ export default function Profile({ address }: { address: string }) {
       }
       setDataSource(p);
     })();
-  }, [address, drizzle]);
+  }, [address, drizzle, readinessState.drizzleState.accounts]);
 
   const columns = [
     {

@@ -8,7 +8,7 @@ const Center = styled.div`
 `;
 //fix this action
 const SubmitDataForm = styled.form`
-  action="/action_page.php";
+  action = "/action_page.php";
   method = "post";
 `;
 
@@ -21,6 +21,8 @@ export default function SubmitData() {
 
   const users = userList.map(str => <li key={str}>{str}</li>);
 
+  const ciphertext = localStorage.getItem("ciphertext");
+
   useEffect(() => {
     (async () => {
       const decrypted = await api.retrieve(
@@ -29,7 +31,7 @@ export default function SubmitData() {
       );
       setDec(decrypted);
     })();
-  }, [localStorage.getItem("ciphertext")]);
+  }, [ciphertext]);
 
   return (
     <>

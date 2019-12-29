@@ -1,13 +1,11 @@
 import React, { useContext, useState } from "react";
 import { DrizzleContext } from "../App";
-import { Steps, Button, Input, Select, message, Result, Popover, Icon} from "antd";
+import { Steps, Button, Input, Select, message, Result } from "antd";
 import styled from "styled-components";
 import ServiceIds from "../data/ServiceIds";
 import verifyProof from "../util/verifyProof";
 //@ts-ignore
 import Identicon, { jsNumberForAddress } from "react-jazzicon";
-//@ts-ignore
-import CopyToClipboard from "react-copy-to-clipboard";
 
 const StepsContent = styled.div`
   margin-top: 16px;
@@ -36,8 +34,7 @@ export default function ProofCreator() {
             diameter={32}
           />
 
-        
-        {/* TODO
+          {/* TODO
         try and fix this so the address also displays with the avatar
         <Popover content="Copy address to clipboard">
         <CopyToClipboard text={readinessState.drizzleState.accounts[0]}>
@@ -143,11 +140,13 @@ export default function ProofCreator() {
                 message.info(result);
 
                 if (result === "Verified") {
-                  await drizzle.contracts.Cortex.methods.setProof(
-                    svc,
-                    identifier,
-                    drizzle.web3.utils.asciiToHex("")
-                  ).send();
+                  await drizzle.contracts.Cortex.methods
+                    .setProof(
+                      svc,
+                      identifier,
+                      drizzle.web3.utils.asciiToHex("")
+                    )
+                    .send();
                   setCurrent(3);
                 }
               }}
